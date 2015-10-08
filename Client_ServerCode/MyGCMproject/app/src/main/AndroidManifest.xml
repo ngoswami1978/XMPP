@@ -21,23 +21,23 @@
 
     <application
     android:icon="@drawable/apartment"
-    android:label="@string/app_name" >
-
-    <activity
-        android:name=".RegisterActivity"
-        android:label="@string/app_name" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+    android:label="@string/app_name_apartment" >
 
     <activity
         android:name="com.neerajweb.mygcmproject.MainActivity"
         android:configChanges="orientation|keyboardHidden"
-        android:label="@string/app_name" >
+        android:label="@string/app_name_apartment" >
     </activity>
+
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/app_name_apartment" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     <receiver
         android:name=".GcmBroadcastReceiver"

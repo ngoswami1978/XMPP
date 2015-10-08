@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Google GCM Android App</string>
+    <string name="app_name_apartment">Lakshaya Apartment Ghitorni New Delhi</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Android Push Notifications</string>
