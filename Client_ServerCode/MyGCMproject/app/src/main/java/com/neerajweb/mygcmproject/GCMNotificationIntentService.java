@@ -1,6 +1,7 @@
 package com.neerajweb.mygcmproject;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -52,8 +53,9 @@ public class GCMNotificationIntentService extends IntentService {
 				}
 				Log.i(TAG, "Completed work @ " + SystemClock.elapsedRealtime());
 
-				sendNotification("Message Received from Google GCM Server: "
-						+ extras.get(Config.MESSAGE_KEY));
+				//sendNotification("Message Received from Google GCM Server: " + extras.get(Config.MESSAGE_KEY));
+				sendNotification("" + extras.get(Config.MESSAGE_KEY));
+
 				Log.i(TAG, "Received: " + extras.toString());
 			}
 		}
@@ -75,6 +77,18 @@ public class GCMNotificationIntentService extends IntentService {
 				.setContentText(msg);
 
 		mBuilder.setContentIntent(contentIntent);
+
+		// Set Vibrate, Sound and Light
+		int defaults = 0;
+		defaults = defaults | Notification.DEFAULT_LIGHTS;
+		defaults = defaults | Notification.DEFAULT_VIBRATE;
+		defaults = defaults | Notification.DEFAULT_SOUND;
+
+		mBuilder.setDefaults(defaults);
+
+		// Set autocancel
+		mBuilder.setAutoCancel(true);
+
 		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 		Log.d(TAG, "Notification sent successfully.");
 	}

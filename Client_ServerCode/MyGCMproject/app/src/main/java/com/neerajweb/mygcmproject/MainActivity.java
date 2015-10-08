@@ -2,6 +2,7 @@ package com.neerajweb.mygcmproject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ public class MainActivity extends Activity {
 
 	ShareExternalServer appUtil;
 	String regId;
+	public static final String REG_ID = "regId";
 	AsyncTask<Void, Void, String> shareRegidTask;
 
 	@Override
@@ -21,6 +23,14 @@ public class MainActivity extends Activity {
 
 		regId = getIntent().getStringExtra("regId");
 		Log.d("MainActivity", "regId: " + regId);
+
+		if (regId=="" || regId==null) {
+			SharedPreferences prefs = getSharedPreferences(MainActivity.class.getSimpleName(),
+					Context.MODE_PRIVATE);
+			String registrationId = prefs.getString(REG_ID, "");
+			regId= registrationId;
+		}
+
 
 		final Context context = this;
 		shareRegidTask = new AsyncTask<Void, Void, String>() {
